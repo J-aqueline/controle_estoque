@@ -29,7 +29,17 @@ const select = async() => {
     }
 }
 
+const selectById = async(id) => {
+    try {
+        const res = await db.any("select i.id, i.nome, i.descricao, i.quantidade, i.preco, c.id idCategoria, c.nome nomeCategoria from item i join categoria c on i.id_categoria = c.id where i.id = $1 or i.nome = $1 or i.descricao like $1",['%'+id+'%'])
+        return res;
+    } catch(err){
+        console.log(err)
+    }
+}
+
 module.exports = {
     insert, 
-    select
+    select,
+    selectById
 }
