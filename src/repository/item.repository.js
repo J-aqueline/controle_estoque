@@ -1,15 +1,4 @@
-const { Client } = require('pg');
-const pgp = require('pg-promise')();
-const cn = {
-    user: 'postgres',
-    host: 'localhost',
-    database: 'controle_estoque',
-    password: 'postgres',
-    port: 5432,
-    max: 10
-
-}
-const db = pgp(cn);
+const db = require('./connection');
 
 const insert = async (item) => {  
     try {
@@ -31,7 +20,7 @@ const select = async() => {
 
 const selectById = async(id) => {
     try {
-        const res = await db.any("select i.id, i.nome, i.descricao, i.quantidade, i.preco, c.id idCategoria, c.nome nomeCategoria from item i join categoria c on i.id_categoria = c.id where i.id = $1 or i.nome = $1 or i.descricao like $1",['%'+id+'%'])
+        const res = await db.any("select i.id, i.nome, i.descricao, i.quantidade, i.preco, c.id idCategoria, c.nome nomeCategoria from item i join categoria c on i.id_categoria = c.id where i.id like $1 or i.nome like $1 or i.descricao like $1",['%'+id+'%'])
         return res;
     } catch(err){
         console.log(err)
