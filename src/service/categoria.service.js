@@ -1,5 +1,5 @@
 const { v4: uuidv4 } = require ('uuid');
-const { insert, select, selectById } = require ('../repository/categoria.repository');
+const { insert, select, selectById, deleteById : deleteCategoriaById } = require ('../repository/categoria.repository');
 
 const addCategoria = async (categoria) => {
     if (categoria.id === null || categoria.id === undefined){
@@ -17,8 +17,13 @@ const getById = async (id) => {
     return await selectById(id);
 }
 
+const deleteById = async (id) => {
+    return await deleteCategoriaById(id);
+}
+
 module.exports = {
     addCategoria,
     getById,
-    getAllCategoria
+    getAllCategoria,
+    deleteById
 }

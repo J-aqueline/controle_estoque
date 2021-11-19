@@ -26,8 +26,18 @@ const selectById = async(id) => {
     }
 }
 
+const deleteById = async(id) => {
+    try {
+        const res = await db.any('delete from categoria where id = $1', [id])
+        return res;
+    }catch (err){
+        console.log(err)
+    }
+}
+
 module.exports = {
     insert, 
     select,
-    selectById
+    selectById,
+    deleteById
 }
