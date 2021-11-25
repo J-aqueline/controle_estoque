@@ -2,8 +2,8 @@ const { v4: uuidv4 } = require ('uuid');
 const { insert, select, selectById, deleteById : deleteItemById } = require ('../repository/item.repository');
 
 const add = async (item) => {
-    if (item.id === null || item.id === undefined){
-        item.id = uuidv4()
+    if (item["id"] === null || item["id"] === undefined){
+        item["id"] = uuidv4()
     }
     return await insert(item);
 

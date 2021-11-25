@@ -2,6 +2,7 @@ const db = require('./connection');
 
 const insert = async (item) => {  
     try {
+        console.log(item)
         const res = await db.one('insert into item (id, nome, descricao, quantidade, preco, id_categoria) values ($1, $2, $3, $4, $5, $6) returning *', [item.id.toString(), item.nome.toString(),item.descricao.toString(),item.quantidade.toString(),item.preco.toString(),item.idCategoria.toString()])
         return res;
     } catch(err){
@@ -10,7 +11,7 @@ const insert = async (item) => {
 }
 
 const select = async() => {
-    try {
+    try{
         const res = await db.any('select i.id, i.nome, i.descricao, i.quantidade, i.preco, c.id idCategoria, c.nome nomeCategoria from item i join categoria c on i.id_categoria = c.id')
         return res;
     } catch(err){

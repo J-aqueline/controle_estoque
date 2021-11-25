@@ -1,10 +1,10 @@
 const pgp = require('pg-promise')();
 const cn = {
-    user: 'postgres',
-    host: 'localhost',
-    database: 'controle_estoque',
-    password: 'postgres',
-    port: 5432,
+    user: process.env.DATABASE_USER,
+    host: process.env.DATABASE_HOST,
+    database: process.env.DATABASE_NAME,
+    password: process.env.DATABASE_PASSWORD,
+    port: process.env.DATABASE_PORT,
     max: 10
 
 }

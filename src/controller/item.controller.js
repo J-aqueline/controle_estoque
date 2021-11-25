@@ -1,6 +1,7 @@
 const { add, getAll, getById, deleteById : deleteItemById   } = require('../service/item.service'); 
 
 const addItem = async (req , res) => { 
+    console.log(req.body)
     return res.status(200).json(await add(req.body));
 }
 
