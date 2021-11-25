@@ -5,7 +5,10 @@ const cn = {
     database: process.env.DATABASE_NAME,
     password: process.env.DATABASE_PASSWORD,
     port: process.env.DATABASE_PORT,
-    max: 10
+    max: 10,
+    ssl: {
+        rejectUnauthorized: false
+    }
 
 }
 
