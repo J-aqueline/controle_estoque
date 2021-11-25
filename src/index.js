@@ -11,6 +11,6 @@ app.use(express.urlencoded({extended: false}));
 // routes
 app.use(require('./routes/routes'));
 
-app.listen(8080);
+app.listen(8080, "0.0.0.0");
 console.log('Servidor está na porta 8080');
 
